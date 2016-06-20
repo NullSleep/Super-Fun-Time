@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'main_content',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,8 +81,12 @@ WSGI_APPLICATION = 'super_fun_time.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'super_fun_db',
+        'USER': 'admin_db',
+        'PASSWORD': 'Zemoga.00',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
