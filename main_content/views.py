@@ -8,21 +8,22 @@ import xml.etree.ElementTree as ET
 
 # Create your views here.
 
-usuarios = [
-        {"name": "Alejandra Pietro", "id": 12108950, "hours": 0},
-        {"name": "Andres del Rio", "id": 12109014, "hours": 0},
-        {"name": "Luis Roca", "id": 12105586, "hours": 0},
-        {"name": "Ivan David", "id": 11945700, "hours": 0},
-        {"name": "Andres Pulido", "id": 12022031, "hours": 0},
-        {"name": "Parzifal D'Leon", "id": 11926499, "hours": 0},
-        {"name": "Yesid Ortiz", "id": 11679382, "hours": 0},
-        {"name": "Luis Salinas", "id": 12011890, "hours": 0},
-        {"name": "Oscar Robayo", "id": 11696911, "hours": 0},
-        {"name": "Juan Torres", "id": 11915856, "hours": 0},
-        {"name": "Carlos Arenas", "id": 11349307, "hours": 0},
-    ]
-
 def principal(request):
+
+    usuarios = [
+            {"name": "Alejandra Pietro", "id": 12108950, "hours": 0},
+            {"name": "Andres del Rio", "id": 12109014, "hours": 0},
+            {"name": "Luis Roca", "id": 12105586, "hours": 0},
+            {"name": "Ivan David", "id": 11945700, "hours": 0},
+            {"name": "Andres Pulido", "id": 12022031, "hours": 0},
+            {"name": "Parzifal D'Leon", "id": 11926499, "hours": 0},
+            {"name": "Yesid Ortiz", "id": 11679382, "hours": 0},
+            {"name": "Luis Salinas", "id": 12011890, "hours": 0},
+            {"name": "Oscar Robayo", "id": 11696911, "hours": 0},
+            {"name": "Juan Torres", "id": 11915856, "hours": 0},
+            {"name": "Carlos Arenas", "id": 11349307, "hours": 0},
+        ]
+
     templ = get_template("index.html")
 
     #careful differentiating between HTTPConnection and HTTPSConnection
