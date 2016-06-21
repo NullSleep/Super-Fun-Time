@@ -63,7 +63,7 @@ def principal(request):
 
     res = []
     for person in usuarios:
-        res.append(person['name'] + ": " + str(person['hours']))
+        res.append(person['name'] + ": " + str(person['hours']) + "h")
 
     #user_names = (person['name'] for person in usuarios) #Get all the user names from a list of dictionaries
     #user_hours = (person['hours'] for person in usuarios)
