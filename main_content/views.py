@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 def principal(request):
 
     usuarios = [
-            {"name": "Alejandra Pietro", "id": 12108950, "hours": 0},
+            {"name": "Alejandra Prieto", "id": 12108950, "hours": 0},
             {"name": "Andres del Rio", "id": 12109014, "hours": 0},
             {"name": "Luis Roca", "id": 12105586, "hours": 0},
             {"name": "Ivan David", "id": 11945700, "hours": 0},
