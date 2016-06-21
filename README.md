@@ -56,6 +56,11 @@ On the project settings.py change the DATABASES to this:
         }
     }
 
+Migrate the database changes:
+
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+
 Make sure PostgreSQL is running before trying to run the project.
 
 ## Deployment to Heroku (only available to admins)
