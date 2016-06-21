@@ -31,8 +31,8 @@ def principal(request):
     conn.connect()
     headers = {"Authorization": "Y2FybG9zLmFyZW5hc0B6ZW1vZ2EuY29tOlJvYm90Um9jazEwNiE=", }
 
-    now = datetime.now() + timedelta(days=-1)
-    timeFormated = now.strftime('%Y%m%d')
+    the_date = datetime.now() + timedelta(days=-1)
+    timeFormated = the_date.strftime('%Y%m%d')
 
     #params = urllib.urlencode({'from': timeFormated})
     path = '/time_entries/report.xml?from=' + timeFormated
@@ -43,7 +43,7 @@ def principal(request):
     print "STATUS: " + str(response.status) + " - REASON: " + response.reason
 
     if response.status == httplib.OK:
-        #print "Request succesfull!"
+        print "Request succesfull!"
         #print response.read()
 
         xml = ET.fromstring(response.read())
@@ -55,7 +55,7 @@ def principal(request):
 
             for person in usuarios:
                 if str(person['id']) == person_id:
-                    print (name, person_id, hours)
+                    #print (name, person_id, hours)
                     new_hours = person['hours'] + float(hours)
                     person['hours'] = new_hours
     else:
@@ -68,5 +68,5 @@ def principal(request):
     #user_names = (person['name'] for person in usuarios) #Get all the user names from a list of dictionaries
     #user_hours = (person['hours'] for person in usuarios)
 
-    html = templ.render({"lista": res})
+    html = templ.render({"fecha": the_date, "lista": res})
     return HttpResponse(html)
