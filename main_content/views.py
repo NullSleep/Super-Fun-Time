@@ -1,23 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import get_template
-from django.template import Context
 from django.shortcuts import render_to_response
+from datetime import datetime, timedelta
 import httplib, urllib
+import xml.etree.ElementTree as ET
 
 # Create your views here.
 
 usuarios = [
-    "Alejandra Prieto",
-    "Andre del Rio",
-    "Ivan David",
-    "Andres Pulido",
-    "Parzifal D'Leon",
-    "Yesid Ortiz",
-    "Luis Salinas",
-    "Oscar Robayo",
-    "Juan Torres",
-    "Carlos Arenas",
+        {"name": "Alejandra Pietro", "id": 12108950, "hours": 0},
+        {"name": "Andres del Rio", "id": 12109014, "hours": 0},
+        {"name": "Luis Roca", "id": 12105586, "hours": 0},
+        {"name": "Ivan David", "id": 11945700, "hours": 0},
+        {"name": "Andres Pulido", "id": 12022031, "hours": 0},
+        {"name": "Parzifal D'Leon", "id": 11926499, "hours": 0},
+        {"name": "Yesid Ortiz", "id": 11679382, "hours": 0},
+        {"name": "Luis Salinas", "id": 12011890, "hours": 0},
+        {"name": "Oscar Robayo", "id": 11696911, "hours": 0},
+        {"name": "Juan Torres", "id": 11915856, "hours": 0},
+        {"name": "Carlos Arenas", "id": 11349307, "hours": 0},
     ]
 
 def principal(request):
@@ -27,20 +29,43 @@ def principal(request):
     conn = httplib.HTTPSConnection("zemogatime.basecamphq.com")
     conn.connect()
     headers = {"Authorization": "Y2FybG9zLmFyZW5hc0B6ZW1vZ2EuY29tOlJvYm90Um9jazEwNiE=", }
-    params = urllib.urlencode({'from': 20160405, 'to': 20160405})
-    conn.request('GET', '/time_entries/report.xml?=', params, headers)
 
+    now = datetime.now() + timedelta(days=-1)
+    timeFormated = now.strftime('%Y%m%d')
+
+    #params = urllib.urlencode({'from': timeFormated})
+    path = '/time_entries/report.xml?from=' + timeFormated
+    print path
+    conn.request('GET', path, {}, headers)
     response = conn.getresponse()
 
-    print response.status
-    print response.reason
+    print "STATUS: " + str(response.status) + " - REASON: " + response.reason
 
     if response.status == httplib.OK:
-        print response.read()
+        #print "Request succesfull!"
+        #print response.read()
+
+        xml = ET.fromstring(response.read())
+        for time_entry in xml.findall('time-entry'):
+            name = time_entry.find('person-name').text
+            person_id = time_entry.find('person-id').text
+            hours = time_entry.find('hours').text
+            #print(name, person_id, hours)
+
+            for person in usuarios:
+                if str(person['id']) == person_id:
+                    print (name, person_id, hours)
+                    new_hours = person['hours'] + float(hours)
+                    person['hours'] = new_hours
     else:
-        print "Something went wrong"
+        print "Something went wrog with the request"
 
+    res = []
+    for person in usuarios:
+        res.append(person['name'] + ": " + str(person['hours']))
 
-    c = Context({"lista": usuarios})
-    html = templ.render(c)
+    #user_names = (person['name'] for person in usuarios) #Get all the user names from a list of dictionaries
+    #user_hours = (person['hours'] for person in usuarios)
+
+    html = templ.render({"lista": res})
     return HttpResponse(html)
