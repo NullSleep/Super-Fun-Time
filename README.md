@@ -1,29 +1,66 @@
-# Heroku Django Starter Template
+# Super Fun Time
 
-An utterly fantastic project starter template for Django 1.9.
+Basecamp time reports for the Zemoga App Dev team.
 
 ## Features
 
-- Production-ready configuration for Static Files, Database Settings, Gunicorn, etc.
-- Enhancements to Django's static file serving functionality via WhiteNoise
+- Connection with the basecamp API.
+- Real time updates.
+
+## TO-DOs
+
+- Make all ids and key parameters as environment variables.
+- Django administration for all the users and data.
+- Date selector.
+- No-SQL database connection.
+
+## Prerequisites
+
+- Have [Python 2.7+](https://www.python.org) installed.
+- Have [PostgreSQL 9.4+](https://www.postgresql.org) installed and running.
 
 ## How to Use
 
 To use this project, follow these steps:
 
-1. Create your working environment.
-2. Install Django (`$ pip install django`)
-3. Create a new project using this template
+1. Create a working Python Virtual Environment (`$ virtualenv my_env`) navigate to it and activate it (`$ source bin/activate`)
+2. Install Django (`$ pip install django -U`)
+3. Clone the repository (`$ git clone https://github.com/NullSleep/Super-Fun-Time.git`) and navigate inside it.
+4. Install the project requirements (`$ pip install -r requirements.txt`)
+5. Collect the static files of the project (`$ python manage.py collectstatic`)
+6. Set the PostgreSQL DB (see the PostgreSQL Database Configuration section)
+7. Run the project (`$ python manage.py runserver`)
 
-## Creating Your Project
+## PostgreSQL Database Configuration
 
-Using this template to create a new Django app is easy::
+To create a new database and user for the project do the following:
 
-    $ django-admin.py startproject --template=https://github.com/heroku/heroku-django-template/archive/master.zip --name=Procfile helloworld
+    $ psql
+    $ CREATE DATABASE <db_name>;
+    $ CREATE USER <db_user_name> WITH PASSWORD '<my_password>';
 
-You can replace ``helloworld`` with your desired project name.
+    $ ALTER ROLE <db_user_name> SET client_encoding TO 'utf8';
+    $ ALTER ROLE <db_user_name> SET default_transaction_isolation TO 'read committed';
+    $ ALTER ROLE <db_user_name> SET timezone TO 'UTC';
 
-## Deployment to Heroku
+On the project settings.py change the DATABASES to this:
+
+    $ DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': '<db_name>',
+            'USER': '<db_user_name>',
+            'PASSWORD': '<my_password>',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
+
+Make sure PostgreSQL is running before trying to run the project.
+
+## Deployment to Heroku (only available to admins)
+
+Make sure you have installed the [Heroku Toolbelt](https://toolbelt.heroku.com)
 
     $ git init
     $ git add -A
@@ -33,8 +70,6 @@ You can replace ``helloworld`` with your desired project name.
     $ git push heroku master
 
     $ heroku run python manage.py migrate
-
-See also, a [ready-made application](https://github.com/heroku/python-getting-started), ready to deploy.
 
 ## Further Reading
 
