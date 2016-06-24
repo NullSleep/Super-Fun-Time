@@ -31,7 +31,13 @@ def principal(request):
     conn.connect()
     headers = {"Authorization": "Y2FybG9zLmFyZW5hc0B6ZW1vZ2EuY29tOlJvYm90Um9jazEwNiE=", }
 
-    the_date = datetime.now() + timedelta(days=-1)
+    current_time = datetime.now()
+    the_date = current_time + timedelta(days=-1)
+
+    #From the documentation: Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
+    if current_time.weekday() == 4:
+        the_date = current_time + timedelta(days=-3)
+
     timeFormated = the_date.strftime('%Y%m%d')
 
     #params = urllib.urlencode({'from': timeFormated})
