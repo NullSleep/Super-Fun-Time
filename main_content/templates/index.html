@@ -21,7 +21,11 @@
   <div class="plan-details">
     <ul>
       {% for persona in lista %}
-        <li>{{persona}}</li>
+        {% if persona.hours < 7 %}
+          <li style="color:red;">{{persona.name}}: {{persona.hours}}h</li>
+        {% else %}
+    			<li style="color:#5f5f5f;">{{persona.name}}: {{persona.hours}}h</li>
+    		{% endif %}
       {% endfor %}
     </ul>
     <p>
@@ -29,7 +33,7 @@
       </br>
       1 Falla: Multa $40.000
       </br>
-      2 Fallas: Multa $80.000
+      2 Fallas: Multa $80.000 y calvacera.
     </p>
   </div>
 </div>
