@@ -35,7 +35,7 @@ def principal(request):
     the_date = current_time + timedelta(days=-1)
 
     #From the documentation: Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
-    if current_time.weekday() == 4:
+    if current_time.weekday() == 0:
         the_date = current_time + timedelta(days=-3)
 
     timeFormated = the_date.strftime('%Y%m%d')
