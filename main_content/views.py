@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 
 def principal(request):
 
-    usuarios = [
+    members = [
             {"name": "Alejandra Prieto", "id": 12108950, "hours": 0},
             {"name": "Andres del Rio", "id": 12109014, "hours": 0},
             {"name": "Luis Roca", "id": 12105586, "hours": 0},
@@ -24,6 +24,12 @@ def principal(request):
             {"name": "Carlos Arenas", "id": 11349307, "hours": 0},
         ]
 
+    holidays = [
+            datetime.strptime('20160704', '%Y%m%d'), #Feast of saint peter
+            datetime.strptime('20160720', '%Y%m%d'), #Independece day
+            datetime.strptime('20160815', '%Y%m%d'), #Assumption of mary
+        ]
+
     templ = get_template("index.html")
 
     #careful differentiating between HTTPConnection and HTTPSConnection
@@ -32,11 +38,23 @@ def principal(request):
     headers = {"Authorization": "Y2FybG9zLmFyZW5hc0B6ZW1vZ2EuY29tOlJvYm90Um9jazEwNiE=", }
 
     current_time = datetime.now()
+
+    #Check the report for the day before
     the_date = current_time + timedelta(days=-1)
 
-    #From the documentation: Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
+    #Check if the date is monday. From the documentation: Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
     if current_time.weekday() == 0:
         the_date = current_time + timedelta(days=-3)
+
+    #Check if the current date is a holiday
+    for holiday in holidays:
+        next_day_after_holiday = holiday + timedelta(days=+1)
+        #If today is the same day after a holiday substract -4 days if the holiday was on monday otherwise substract 2 days (-1 day of the holiday -1 day for the date of the review)
+        if current_time.strftime('%Y%m%d') == next_day_after_holiday.strftime('%Y%m%d'):
+            if holiday.weekday() == 0:
+                the_date = current_time + timedelta(days=-4)
+            else:
+                the_date = current_time + timedelta(days=-2)
 
     timeFormated = the_date.strftime('%Y%m%d')
 
@@ -59,7 +77,7 @@ def principal(request):
             hours = time_entry.find('hours').text
             #print(name, person_id, hours)
 
-            for person in usuarios:
+            for person in members:
                 if str(person['id']) == person_id:
                     #print (name, person_id, hours)
                     new_hours = person['hours'] + float(hours)
@@ -67,7 +85,7 @@ def principal(request):
     else:
         print "Something went wrog with the request"
 
-    #user_names = (person['name'] for person in usuarios) #Get all the user names from a list of dictionaries
+    #user_names = (person['name'] for person in members) #Get all the user names from a list of dictionaries
 
-    html = templ.render({"fecha": the_date, "lista": usuarios})
+    html = templ.render({"fecha": the_date, "lista": members})
     return HttpResponse(html)
