@@ -31,9 +31,16 @@
     <p>
       Reglas:
       </br>
-      1 Falla: Multa $40.000
+      1 Falla: Aporte obligatorio $40.000
       </br>
-      2 Fallas: Multa $80.000 y calvacera.
+      2 Fallas: Aporte obligatorio $80.000 y calvacera.
+    </p>
+    <p>
+      Telefonos para calvacera:</br>
+      {% for persona in lista %}
+        </br>
+          {{persona.name}} : {{persona.number}}
+      {% endfor %}
     </p>
   </div>
 </div>
