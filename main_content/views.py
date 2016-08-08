@@ -27,7 +27,7 @@ def principal(request):
     holidays = [
             datetime.strptime('20160704', '%Y%m%d'), #Feast of saint peter
             datetime.strptime('20160720', '%Y%m%d'), #Independece day
-            datetime.strptime('20160807', '%Y%m%d'), #Battle of Boyaca
+            datetime.strptime('20160808', '%Y%m%d'), #Battle of Boyaca
             datetime.strptime('20160815', '%Y%m%d'), #Assumption of mary
             datetime.strptime('20161017', '%Y%m%d'), #Day of races
             datetime.strptime('20161107', '%Y%m%d'), #All saints
@@ -55,12 +55,14 @@ def principal(request):
     #Check if the current date is a holiday
     for holiday in holidays:
         next_day_after_holiday = holiday + timedelta(days=+1)
-        #If today is the same day after a holiday substract -4 days if the holiday was on monday otherwise substract 2 days (-1 day of the holiday -1 day for the date of the review)
+        #If today is the same day after a holiday
         if current_time.strftime('%Y%m%d') == next_day_after_holiday.strftime('%Y%m%d'):
             if holiday.weekday() == 0:
-                the_date = current_time + timedelta(days=-4)
+                the_date = current_time + timedelta(days=-4) #substract -4 days if the holiday was on monday
+            elif holiday.weekday() == 6:
+                the_date = current_time + timedelta(days=-3) #If sunday substract to check for friday's date
             else:
-                the_date = current_time + timedelta(days=-2)
+                the_date = current_time + timedelta(days=-2) #substract 2 days (-1 day of the holiday -1 day for the date of the review)
 
     timeFormated = the_date.strftime('%Y%m%d')
 
@@ -89,7 +91,7 @@ def principal(request):
                     new_hours = person['hours'] + float(hours)
                     person['hours'] = new_hours
     else:
-        print "Something went wrog with the request"
+        print "Something went wrong with the request"
 
     #user_names = (person['name'] for person in members) #Get all the user names from a list of dictionaries
 
