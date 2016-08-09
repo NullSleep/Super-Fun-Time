@@ -27,7 +27,7 @@ def principal(request):
     holidays = [
             datetime.strptime('20160704', '%Y%m%d'), #Feast of saint peter
             datetime.strptime('20160720', '%Y%m%d'), #Independece day
-            datetime.strptime('20160808', '%Y%m%d'), #Battle of Boyaca
+            datetime.strptime('20160807', '%Y%m%d'), #Battle of Boyaca
             datetime.strptime('20160815', '%Y%m%d'), #Assumption of mary
             datetime.strptime('20161017', '%Y%m%d'), #Day of races
             datetime.strptime('20161107', '%Y%m%d'), #All saints
