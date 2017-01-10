@@ -9,11 +9,9 @@ import xml.etree.ElementTree as ET
 # Create your views here.
 
 def principal(request):
-
     members = [
             {"name": "Alejandra Prieto", "id": 12108950, "hours": 0, "number": '310-2979521'},
             {"name": "Andres del Rio", "id": 12109014, "hours": 0, "number": '316-5536752'},
-            {"name": "Luis Roca", "id": 12105586, "hours": 0, "number": '301-2307556'},
             {"name": "Ivan David", "id": 11945700, "hours": 0, "number": '311-6724936'},
             {"name": "Andres Pulido", "id": 12022031, "hours": 0, "number": '319-5275509'},
             {"name": "Parzifal D'Leon", "id": 11926499, "hours": 0, "number": '312-4182262'},
@@ -25,15 +23,23 @@ def principal(request):
         ]
 
     holidays = [
-            datetime.strptime('20160704', '%Y%m%d'), #Feast of saint peter
-            datetime.strptime('20160720', '%Y%m%d'), #Independece day
-            datetime.strptime('20160807', '%Y%m%d'), #Battle of Boyaca
-            datetime.strptime('20160815', '%Y%m%d'), #Assumption of mary
-            datetime.strptime('20161017', '%Y%m%d'), #Day of races
-            datetime.strptime('20161107', '%Y%m%d'), #All saints
-            datetime.strptime('20161114', '%Y%m%d'), #Independece of Cartagena
-            datetime.strptime('20161208', '%Y%m%d'), #Immaculate Conception
-            datetime.strptime('20161225', '%Y%m%d'), #Christmas
+            datetime.strptime('20170109', '%Y%m%d'), #Epiphany
+            datetime.strptime('20170320', '%Y%m%d'), #St Josephs Day
+            datetime.strptime('20170413', '%Y%m%d'), #Maundy Thursday
+            datetime.strptime('20170414', '%Y%m%d'), #Good Friday
+            datetime.strptime('20170501', '%Y%m%d'), #Labour Day
+            datetime.strptime('20170529', '%Y%m%d'), #Ascension Day
+            datetime.strptime('20170619', '%Y%m%d'), #Corpus Christi
+            datetime.strptime('20170626', '%Y%m%d'), #Sacred Heart
+            datetime.strptime('20170703', '%Y%m%d'), #Saint Peter and Saint Paul
+            datetime.strptime('20170720', '%Y%m%d'), #Declaration of Independenc
+            datetime.strptime('20170807', '%Y%m%d'), #Battle of Boyaca
+            datetime.strptime('20170815', '%Y%m%d'), #Assumption Day
+            datetime.strptime('20171016', '%Y%m%d'), #Columbus Day
+            datetime.strptime('20171106', '%Y%m%d'), #All Saints Day
+            datetime.strptime('20171113', '%Y%m%d'), #Independece of Cartagena
+            datetime.strptime('20171208', '%Y%m%d'), #Immaculate Conception
+            datetime.strptime('20171225', '%Y%m%d'), #Christmas
         ]
 
     templ = get_template("index.html")
