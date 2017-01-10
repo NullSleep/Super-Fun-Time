@@ -81,7 +81,7 @@ def principal(request):
     print "STATUS: " + str(response.status) + " - REASON: " + response.reason
 
     if response.status == httplib.OK:
-        print "Request succesfull!"
+        print "SUCCESS: Request succesfull!"
         #print response.read()
 
         xml = ET.fromstring(response.read())
@@ -97,9 +97,10 @@ def principal(request):
                     new_hours = person['hours'] + float(hours)
                     person['hours'] = new_hours
     else:
-        print "Something went wrong with the request"
+        print "ERROR: Something went wrong with the request"
 
-    #user_names = (person['name'] for person in members) #Get all the user names from a list of dictionaries
+    #Useful to have just in case
+    #user_names = (members['name'] for person in members) #Get all the user names from a list of dictionaries
 
     html = templ.render({"fecha": the_date, "lista": members})
     return HttpResponse(html)
