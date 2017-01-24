@@ -10,15 +10,15 @@ import xml.etree.ElementTree as ET
 
 def principal(request):
     members = [
-            {"name": "Alejandra Prieto", "id": 12108950, "hours": 0, "number": '310-2979521'},
-            {"name": "Andres del Rio", "id": 12109014, "hours": 0, "number": '316-5536752'},
-            {"name": "Ivan David", "id": 11945700, "hours": 0, "number": '311-6724936'},
-            {"name": "Andres Pulido", "id": 12022031, "hours": 0, "number": '319-5275509'},
-            {"name": "Parzifal D'Leon", "id": 11926499, "hours": 0, "number": '312-4182262'},
-            {"name": "Yesid Ortiz", "id": 11679382, "hours": 0, "number": '316-3458730'},
-            {"name": "Luis Salinas", "id": 12011890, "hours": 0, "number": '301-3365150'},
-            {"name": "Juan Torres", "id": 11915856, "hours": 0, "number": '301-4360087'},
-            {"name": "Carlos Arenas", "id": 11349307, "hours": 0, "number": '314-3271566'},
+            {"name": "Alejandra Prieto", "id": 12108950, "hours": 0, "number": '310 2979521'},
+            {"name": "Andres del Rio", "id": 12109014, "hours": 0, "number": '316 5536752'},
+            {"name": "Ivan David", "id": 11945700, "hours": 0, "number": '311 6724936'},
+            {"name": "Andres Pulido", "id": 12022031, "hours": 0, "number": '+33 7 69016977'},
+            {"name": "Parzifal D'Leon", "id": 11926499, "hours": 0, "number": '312 4182262'},
+            {"name": "Yesid Ortiz", "id": 11679382, "hours": 0, "number": '316 3458730'},
+            {"name": "Luis Salinas", "id": 12011890, "hours": 0, "number": '301 3365150'},
+            {"name": "Juan Torres", "id": 11915856, "hours": 0, "number": '301 4360087'},
+            {"name": "Carlos Arenas", "id": 11349307, "hours": 0, "number": '314 3271566'},
         ]
 
     holidays = [
