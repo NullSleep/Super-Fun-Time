@@ -17,7 +17,6 @@ def principal(request):
             {"name": "Parzifal D'Leon", "id": 11926499, "hours": 0, "number": '312-4182262'},
             {"name": "Yesid Ortiz", "id": 11679382, "hours": 0, "number": '316-3458730'},
             {"name": "Luis Salinas", "id": 12011890, "hours": 0, "number": '301-3365150'},
-            {"name": "Oscar Robayo", "id": 11696911, "hours": 0, "number": '304-3785705'},
             {"name": "Juan Torres", "id": 11915856, "hours": 0, "number": '301-4360087'},
             {"name": "Carlos Arenas", "id": 11349307, "hours": 0, "number": '314-3271566'},
         ]
