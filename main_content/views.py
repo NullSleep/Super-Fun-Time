@@ -69,7 +69,8 @@ def principal(request):
             else:
                 the_date = current_time + timedelta(days=-2) #substract 2 days (-1 day of the holiday -1 day for the date of the review)
 
-    timeFormated = the_date.strftime('%Y%m%d')
+    #timeFormated = the_date.strftime('%Y%m%d') #<yyyy><mm><dd>
+    timeFormated = "20170412"
 
     #params = urllib.urlencode({'from': timeFormated})
     path = '/time_entries/report.xml?from=' + timeFormated
