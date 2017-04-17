@@ -55,7 +55,7 @@ def principal(request):
 
     #Check if the date is monday. From the documentation: Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
     if current_time.weekday() == 0:
-        the_date = current_time + timedelta(days=-3)
+        the_date = current_time + timedelta(days=-5)
 
     #Check if the current date is a holiday
     for holiday in holidays:
