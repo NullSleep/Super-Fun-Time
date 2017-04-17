@@ -55,7 +55,7 @@ def principal(request):
 
     #Check if the date is monday. From the documentation: Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
     if current_time.weekday() == 0:
-        the_date = current_time + timedelta(days=-5)
+        the_date = current_time + timedelta(days=-3)
 
     #Check if the current date is a holiday
     for holiday in holidays:
@@ -69,8 +69,7 @@ def principal(request):
             else:
                 the_date = current_time + timedelta(days=-2) #substract 2 days (-1 day of the holiday -1 day for the date of the review)
 
-    #timeFormated = the_date.strftime('%Y%m%d') #<yyyy><mm><dd>
-    timeFormated = "20170412"
+    timeFormated = the_date.strftime('%Y%m%d') #<yyyy><mm><dd>
 
     #params = urllib.urlencode({'from': timeFormated})
     path = '/time_entries/report.xml?from=' + timeFormated
