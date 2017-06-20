@@ -12,7 +12,6 @@ def principal(request):
     members = [
             {"name": "Alejandra Prieto", "id": 12108950, "hours": 0, "number": '310 2979521'},
             {"name": "Andres del Rio", "id": 12109014, "hours": 0, "number": '316 5536752'},
-            {"name": "Ivan David", "id": 11945700, "hours": 0, "number": '311 6724936'},
             {"name": "Yesid Ortiz", "id": 11679382, "hours": 0, "number": '316 3458730'},
             {"name": "Luis Salinas", "id": 12011890, "hours": 0, "number": '301 3365150'},
             {"name": "Carlos Arenas", "id": 11349307, "hours": 0, "number": '314 3271566'},
