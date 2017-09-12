@@ -14,6 +14,7 @@ def principal(request):
             {"name": "Yesid Ortiz", "id": 11679382, "hours": 0, "number": '316 3458730'},
             {"name": "Luis Salinas", "id": 12011890, "hours": 0, "number": '301 3365150'},
             {"name": "Carlos Arenas", "id": 11349307, "hours": 0, "number": '314 3271566'},
+            {"name": "Alejandro Figueroa", "id": 12412894, "hours": 0, "number": 'NA'},
         ]
 
     holidays = [
