@@ -13,7 +13,6 @@ def principal(request):
             {"name": "Andres del Rio", "id": 12109014, "hours": 0, "number": '316 5536752'},
             {"name": "Yesid Ortiz", "id": 11679382, "hours": 0, "number": '316 3458730'},
             {"name": "Luis Salinas", "id": 12011890, "hours": 0, "number": '301 3365150'},
-            {"name": "Carlos Arenas", "id": 11349307, "hours": 0, "number": '314 3271566'},
             {"name": "Alejandro Figueroa", "id": 12412894, "hours": 0, "number": 'NA'},
             {"name": "Juan Fernando Rojas", "id": 12414671, "hours": 0, "number": 'NA'},
             {"name": "Ernesto Guitierrez", "id": 12433433, "hours": 0, "number": 'NA'},
@@ -44,7 +43,7 @@ def principal(request):
     #careful differentiating between HTTPConnection and HTTPSConnection
     conn = httplib.HTTPSConnection("zemogatime.basecamphq.com")
     conn.connect()
-    headers = {"Authorization": "Y2FybG9zLmFyZW5hc0B6ZW1vZ2EuY29tOlJvYm90Um9jazEwNiE=", }
+    headers = {"Authorization": "ffd9b9cd58b4227a10ea2fa3f89dc3a547e567e1", }
 
     current_time = datetime.now()
 
