@@ -43,7 +43,7 @@ def principal(request):
     #careful differentiating between HTTPConnection and HTTPSConnection
     conn = httplib.HTTPSConnection("zemogatime.basecamphq.com")
     conn.connect()
-    headers = {"Authorization": "ffd9b9cd58b4227a10ea2fa3f89dc3a547e567e1", }
+    headers = {"Authorization": "ffd9b9cd58b4227a10ea2fa3f89dc3a547e567e1=", }
 
     current_time = datetime.now()
 
